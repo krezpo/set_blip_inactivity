@@ -1,0 +1,6 @@
+source_folder: "<BUILDER_SOURCE_FOLDER>"
+destination_folder: "<BUILDER_DESTINATION_FOLDER>"
+inactivity_states: "inactivity_states.json"
+context_message: "<CHOOSE_MESSAGE>"
+destination_service: "<CHOOSE_BLIP_SERVICE>"
+expiration_interval: "<HOUR>:<MINUTES>"

@@ -1,0 +1,199 @@
+{    "4ceeb9c3-a5e5-4b5a-9468-352fb3ddf525": {
+        "$contentActions": [
+            {
+                "input": {
+                    "bypass": true,
+                    "$cardContent": {
+                        "document": {
+                            "id": "1aedd8bc-1f04-417c-b074-747e476cc20d",
+                            "type": "text/plain",
+                            "textContent": "Entrada do usuário",
+                            "content": "Entrada do usuário"
+                        },
+                        "editable": false,
+                        "deletable": true,
+                        "position": "right",
+                        "editing": false
+                    },
+                    "$invalid": false
+                },
+                "$invalid": false,
+                "$$hashKey": "object:1564"
+            }
+        ],
+        "$conditionOutputs": [],
+        "$enteringCustomActions": [
+            {
+                "$id": "5a32fc49-951d-4ed7-aa32-d2f52deac222",
+                "type": "Redirect",
+                "$title": "REDIRECT TO MAIN",
+                "$invalid": false,
+                "settings": {
+                    "context": {
+                        "type": "text/plain",
+                        "value": "{{redirect@context}}"
+                    },
+                    "address": "{{redirect@to}}"
+                },
+                "conditions": []
+            }
+        ],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$defaultOutput": {
+            "stateId": "onboarding",
+            "$invalid": false
+        },
+        "$tags": [
+            {
+                "background": "#FF961E",
+                "label": "ExecuteScript",
+                "id": "blip-tag-9b90cd4b-25b1-fd0e-8504-8dcfb012ce9f",
+                "canChangeBackground": false
+            },
+            {
+                "background": "#1EA1FF",
+                "label": "Redirect",
+                "id": "blip-tag-8d1fe934-661c-b704-d210-3a2fcdc44392",
+                "canChangeBackground": false
+            }
+        ],
+        "id": "4ceeb9c3-a5e5-4b5a-9468-352fb3ddf525",
+        "root": false,
+        "$title": "[REDIRECT] Main",
+        "$position": {
+            "top": "109px",
+            "left": "2026px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "e3bfe3f0-2cfd-4076-a708-fc209bf297ff": {
+        "$contentActions": [
+            {
+                "action": {
+                    "$id": "2301ab7f-df23-4356-9852-78063bc472e3",
+                    "type": "SendMessage",
+                    "settings": {
+                        "id": "028d1358-9905-4eed-a3ce-e37d590fd93a",
+                        "type": "application/vnd.lime.chatstate+json",
+                        "content": {
+                            "state": "composing",
+                            "interval": 1000
+                        }
+                    },
+                    "$cardContent": {
+                        "document": {
+                            "id": "028d1358-9905-4eed-a3ce-e37d590fd93a",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            }
+                        },
+                        "editable": true,
+                        "deletable": true,
+                        "position": "left"
+                    }
+                },
+                "$invalid": false,
+                "$$hashKey": "object:1200"
+            },
+            {
+                "action": {
+                    "$id": "8e49ef8d-e370-41fa-9b56-2f32fc668f39",
+                    "type": "SendMessage",
+                    "settings": {
+                        "id": "63ca3a05-c664-48e3-bc2d-19fb6eda2533",
+                        "type": "text/plain",
+                        "content": "Vejo que vc não está mais por aqui e por isso vou encerrar o atendimento. Se precisar de mim é só dar um \"Oi\" 😉\n\n*Até mais* 👋",
+                        "metadata": {}
+                    },
+                    "$cardContent": {
+                        "document": {
+                            "id": "63ca3a05-c664-48e3-bc2d-19fb6eda2533",
+                            "type": "text/plain",
+                            "content": "Vejo que vc não está mais por aqui e por isso vou encerrar o atendimento. Se precisar de mim é só dar um \"Oi\" 😉\n\n*Até mais* 👋"
+                        },
+                        "editable": true,
+                        "deletable": true,
+                        "position": "left"
+                    }
+                },
+                "$invalid": false,
+                "$$hashKey": "object:1201"
+            },
+            {
+                "input": {
+                    "bypass": false,
+                    "$cardContent": {
+                        "document": {
+                            "id": "6899f79f-cde9-4a4f-9f67-f47adaede5b9",
+                            "type": "text/plain",
+                            "textContent": "Entrada do usuário",
+                            "content": "Entrada do usuário"
+                        },
+                        "editable": false,
+                        "deletable": true,
+                        "position": "right",
+                        "editing": false
+                    },
+                    "$invalid": false
+                },
+                "$invalid": false,
+                "$$hashKey": "object:767"
+            }
+        ],
+        "$conditionOutputs": [],
+        "$enteringCustomActions": [
+            {
+                "$id": "d5d6721a-f2bf-4d05-82aa-e9bdbe7e3b9f",
+                "type": "TrackEvent",
+                "$title": "[TRACKING] INATIVIDADE DO BOT",
+                "$invalid": false,
+                "settings": {
+                    "extras": {
+                        "UserId": "{{contact.identity}}"
+                    },
+                    "category": "Inatividade",
+                    "action": "NLP"
+                },
+                "conditions": []
+            },
+            {
+                "$id": "e9931861-0ba8-470c-b09b-b5bf1069f97e",
+                "type": "TrackEvent",
+                "$title": "[TRACKING] INATIVIDADE DO SERVIÇO",
+                "$invalid": false,
+                "settings": {
+                    "extras": {
+                        "UserId": "{{contact.identity}}"
+                    },
+                    "category": "Inatividade - Pesquisa",
+                    "action": "{{state.previous.name}}"
+                },
+                "conditions": []
+            }
+        ],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$defaultOutput": {
+            "stateId": "4ceeb9c3-a5e5-4b5a-9468-352fb3ddf525",
+            "$invalid": false
+        },
+        "$tags": [],
+        "id": "e3bfe3f0-2cfd-4076-a708-fc209bf297ff",
+        "root": false,
+        "$title": "[MAIN] Inatividade",
+        "$position": {
+            "top": "275px",
+            "left": "2027px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    }
+}
