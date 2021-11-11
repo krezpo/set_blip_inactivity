@@ -68,24 +68,24 @@ if __name__ == "__main__":
             expiration_condition = get_expiration_condition(expiration_state_id)
 
             for state in states:
-                builder[state] = states[state]
+                builder["flow"][state] = states[state]
         
-        for state in builder:
+        for state in builder["flow"]:
             if state in ("onboarding", expiration_state_id):
                 continue
 
             if "desk:" in state:
                 continue
 
-            for action in builder[state]["$contentActions"]:
+            for action in builder["flow"][state]["$contentActions"]:
 
                 if 'input' in action:
                     if action['input']['bypass'] == False:
                         action['input']['expiration'] = config["expiration_interval"]
 
-                        if not has_expiration_condition(builder[state]["$conditionOutputs"]):
-                            builder[state]["$conditionOutputs"].append(expiration_condition)
-                            print("Inseriu inatividade em {}".format(builder[state]["$title"]))
+                        if not has_expiration_condition(builder["flow"][state]["$conditionOutputs"]):
+                            builder["flow"][state]["$conditionOutputs"].append(expiration_condition)
+                            print("Inseriu inatividade em {}".format(builder["flow"][state]["$title"]))
         
         with open("{}/{}.json".format(config["destination_folder"], chatbot_name), "w+", encoding=ENCODING) as output:
             json.dump(builder, output, indent=4, ensure_ascii=False)

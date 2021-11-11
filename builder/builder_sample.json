@@ -1,0 +1,2273 @@
+{
+    "flow": {
+        "onboarding": {
+            "$contentActions": [
+                {
+                    "input": {
+                        "bypass": false,
+                        "$cardContent": {
+                            "document": {
+                                "id": "a5f855b2-7344-44ad-bf8b-75bccd63d288",
+                                "type": "text/plain",
+                                "content": "User input"
+                            },
+                            "editable": false,
+                            "deletable": false,
+                            "position": "right"
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [
+                {
+                    "stateId": "welcome",
+                    "conditions": [
+                        {
+                            "source": "input",
+                            "comparison": "matches",
+                            "values": [
+                                ".*"
+                            ]
+                        }
+                    ],
+                    "$connId": "con_3",
+                    "$invalid": false,
+                    "$id": "d261f28e-36f6-4da5-bc59-57f979bf3afa"
+                }
+            ],
+            "$enteringCustomActions": [],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "fallback",
+                "$invalid": false
+            },
+            "id": "onboarding",
+            "root": true,
+            "$position": {
+                "top": "118px",
+                "left": "342px"
+            },
+            "$title": "Início",
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": [
+                {
+                    "background": "#232d11",
+                    "label": "User Input",
+                    "id": "blip-tag-ba80e21e-7e32-11e9-8f9e-2a86e4085a59",
+                    "canChangeBackground": false
+                }
+            ]
+        },
+        "fallback": {
+            "$contentActions": [
+                {
+                    "input": {
+                        "bypass": true,
+                        "$cardContent": {
+                            "document": {
+                                "id": "95b10ba8-e351-4d16-9b10-ce14961cb1fd",
+                                "type": "text/plain"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right"
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [
+                {
+                    "stateId": "error",
+                    "conditions": [
+                        {
+                            "source": "input",
+                            "comparison": "matches",
+                            "values": [
+                                ".*"
+                            ]
+                        }
+                    ],
+                    "$connId": "con_8",
+                    "$invalid": false,
+                    "$id": "cde0c288-d7dd-427b-8584-eee25942c53c"
+                }
+            ],
+            "$enteringCustomActions": [
+                {
+                    "$id": "06d43781-32fa-4f7a-a346-7d24b63c0f3e",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] PRA ONDE FOI",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.previous.name}}] Pra onde foi",
+                        "action": "{{state.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "5b766e6a-17a8-4b70-b4c9-c707c5191d2c",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] DE ONDE VEIO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] De onde veio",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "ddf0754b-23aa-4eef-938c-428d91412614",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] HORA DE ACESSO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] Hora de Acesso",
+                        "action": "{{calendar.hour}}"
+                    }
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "onboarding",
+                "$invalid": false
+            },
+            "id": "fallback",
+            "$position": {
+                "top": "587px",
+                "left": "358px"
+            },
+            "$title": "Exceções",
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": []
+        },
+        "welcome": {
+            "$contentActions": [
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "00000000-0000-0000-0000-000000000000",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "00000000-0000-0000-0000-000000000000",
+                                "type": "application/vnd.lime.chatstate+json",
+                                "content": {
+                                    "state": "composing",
+                                    "interval": 1000
+                                }
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "00000000-0000-0000-0000-000000000001",
+                            "type": "text/plain",
+                            "content": "Olá {{contact.name}}!\nÉ um prazer falar com você 😊"
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "00000000-0000-0000-0000-000000000001",
+                                "type": "text/plain",
+                                "content": "Olá {{contact.name}}!\nÉ um prazer falar com você 😊"
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "input": {
+                        "bypass": true,
+                        "$cardContent": {
+                            "document": {
+                                "id": "cf8c9892-92a7-4a39-b169-9b8f5f7ef7a4",
+                                "type": "text/plain",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right"
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [
+                {
+                    "stateId": "0a2d7b49-9df3-4e94-9714-eefd7ed84a6e",
+                    "$connId": "con_13",
+                    "conditions": [
+                        {
+                            "source": "input",
+                            "comparison": "matches",
+                            "values": [
+                                ".*"
+                            ]
+                        }
+                    ],
+                    "$invalid": false,
+                    "$id": "4785941c-32fb-4f90-aa52-43c23c56ec65"
+                }
+            ],
+            "$enteringCustomActions": [
+                {
+                    "type": "TrackEvent",
+                    "$title": "TrackAnyAttendance",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {},
+                        "category": "AtendimentosTotais",
+                        "action": "AtendimentosTotais"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "06d43781-32fa-4f7a-a346-7d24b63c0f3e",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] PRA ONDE FOI",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.previous.name}}] Pra onde foi",
+                        "action": "{{state.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "5b766e6a-17a8-4b70-b4c9-c707c5191d2c",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] DE ONDE VEIO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] De onde veio",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "ddf0754b-23aa-4eef-938c-428d91412614",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] HORA DE ACESSO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] Hora de Acesso",
+                        "action": "{{calendar.hour}}"
+                    }
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "fallback",
+                "$invalid": false
+            },
+            "id": "welcome",
+            "$position": {
+                "top": "250px",
+                "left": "342px"
+            },
+            "$title": "1.0 - Boas vindas",
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": [
+                {
+                    "background": "#61D36F",
+                    "label": "TrackEvent",
+                    "id": "blip-tag-bc58ce94-4e76-4f66-a2c4-efb9b8ebb738",
+                    "canChangeBackground": false
+                }
+            ]
+        },
+        "error": {
+            "$contentActions": [
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "00000000-0000-0000-0000-000000000002",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "00000000-0000-0000-0000-000000000002",
+                                "type": "application/vnd.lime.chatstate+json",
+                                "content": {
+                                    "state": "composing",
+                                    "interval": 1000
+                                }
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "00000000-0000-0000-0000-000000000003",
+                            "type": "text/plain",
+                            "content": "Desculpe, não consegui entender!"
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "00000000-0000-0000-0000-000000000003",
+                                "type": "text/plain",
+                                "content": "Desculpe, não consegui entender!"
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "input": {
+                        "bypass": true,
+                        "$cardContent": {
+                            "document": {
+                                "id": "a1f34699-dd5c-43b6-8345-fde58dc32c0d",
+                                "type": "text/plain",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right"
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [],
+            "$enteringCustomActions": [
+                {
+                    "$id": "06d43781-32fa-4f7a-a346-7d24b63c0f3e",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] PRA ONDE FOI",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.previous.name}}] Pra onde foi",
+                        "action": "{{state.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "5b766e6a-17a8-4b70-b4c9-c707c5191d2c",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] DE ONDE VEIO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] De onde veio",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "ddf0754b-23aa-4eef-938c-428d91412614",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] HORA DE ACESSO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] Hora de Acesso",
+                        "action": "{{calendar.hour}}"
+                    }
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "onboarding",
+                "$invalid": false
+            },
+            "id": "error",
+            "$position": {
+                "top": "587px",
+                "left": "596px"
+            },
+            "$title": "Erro padrão",
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": []
+        },
+        "0a2d7b49-9df3-4e94-9714-eefd7ed84a6e": {
+            "$contentActions": [
+                {
+                    "input": {
+                        "bypass": true,
+                        "$cardContent": {
+                            "document": {
+                                "id": "7fb24b66-f182-4a6b-82ec-17cd0d87cf16",
+                                "type": "text/plain",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right"
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [
+                {
+                    "stateId": "3c555d39-68eb-466b-9063-6adeb01132fc",
+                    "$connId": "con_18",
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "comparison": "equals",
+                            "values": [
+                                "false"
+                            ],
+                            "variable": "isWorkTime"
+                        }
+                    ],
+                    "$invalid": false,
+                    "$id": "96b0174f-14f1-4e1e-bee9-127999928a33"
+                },
+                {
+                    "stateId": "95118c04-1f32-40df-b1b0-54fb24fa2fc7",
+                    "$connId": "con_23",
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "comparison": "equals",
+                            "values": [
+                                "true"
+                            ],
+                            "variable": "isWorkTime"
+                        }
+                    ],
+                    "$invalid": false,
+                    "$id": "993612d2-ed2b-493f-8934-1a2667acf06c"
+                }
+            ],
+            "$enteringCustomActions": [
+                {
+                    "type": "ExecuteScript",
+                    "$title": "CheckWorkTime",
+                    "$invalid": false,
+                    "settings": {
+                        "function": "run",
+                        "source": "// Receive the variables as parameters\nfunction run(offset, start, end, workDays) {\n\n    offset = parseInt(offset);\n    let today = nowUTC(offset);\n    let startDate = utcDate(start, today);\n    let endDate = utcDate(end, today);\n\n    \n    return ((today - startDate) > 0) && ((endDate - today) > 0) && isWorkDay(today, workDays);\n}\n\n//Get now UTC Date\nfunction nowUTC(offset) {\n    let now = new Date;\n    let utc_timestamp = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),\n        now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());\n\n    return new Date(utc_timestamp + offset * 3600 * 1000);\n}\n\n//Get UTC Date\nfunction utcDate(timeString, today) {\n    let now = new Date;\n\n    let hour = getValueByString('hour', timeString);\n    let minutes = getValueByString('minutes', timeString);\n    let utc_timestamp = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate(),\n        hour, minutes, 0, 0);\n    return new Date(utc_timestamp);\n}\n\n//Get hour/minute by string with pattern HH:mm\nfunction getValueByString(type, timeString) {\n\n    if (type === 'hour') {\n        return parseInt(timeString.substring(0, timeString.indexOf(':')));\n    }\n\n    else if (type === 'minutes') {\n        return parseInt(timeString.substring(timeString.indexOf(':') + 1, timeString.length));\n    }\n\n    return 0;\n}\n\n//Get if today is a work day\nfunction isWorkDay(today, workDays) {\n    workDays = workDays.split(',');\n\n    return workDays.indexOf(today.getDay().toString()) >= 0;\n}\n",
+                        "inputVariables": [
+                            "config.dateTimeOffset",
+                            "config.startDate",
+                            "config.endDate",
+                            "config.workDays"
+                        ],
+                        "outputVariable": "isWorkTime",
+                        "LocalTimeZoneEnabled": false
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "06d43781-32fa-4f7a-a346-7d24b63c0f3e",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] PRA ONDE FOI",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.previous.name}}] Pra onde foi",
+                        "action": "{{state.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "5b766e6a-17a8-4b70-b4c9-c707c5191d2c",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] DE ONDE VEIO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] De onde veio",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "ddf0754b-23aa-4eef-938c-428d91412614",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] HORA DE ACESSO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] Hora de Acesso",
+                        "action": "{{calendar.hour}}"
+                    }
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "fallback",
+                "$invalid": false
+            },
+            "id": "0a2d7b49-9df3-4e94-9714-eefd7ed84a6e",
+            "root": false,
+            "$title": "2.0 - Verifica Horário Atendimento",
+            "$position": {
+                "top": "238px",
+                "left": "606px"
+            },
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": [
+                {
+                    "background": "#FF961E",
+                    "label": "ExecuteScript",
+                    "id": "blip-tag-d2974ed4-d8d9-0d87-6153-fbed3205d146",
+                    "canChangeBackground": false
+                }
+            ]
+        },
+        "95118c04-1f32-40df-b1b0-54fb24fa2fc7": {
+            "$contentActions": [
+                {
+                    "input": {
+                        "bypass": true,
+                        "$cardContent": {
+                            "document": {
+                                "id": "425aa5d2-fcf9-4094-a52c-73917f47875c",
+                                "type": "text/plain",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right"
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [
+                {
+                    "stateId": "143e0124-ec4e-462d-8369-efc61791afe6",
+                    "$connId": "con_28",
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "comparison": "equals",
+                            "values": [
+                                "false"
+                            ],
+                            "variable": "hasAttendant"
+                        }
+                    ],
+                    "$invalid": false,
+                    "$id": "40474afd-dfa8-4688-9a4a-f58742e0802c"
+                },
+                {
+                    "stateId": "4c0d9be0-bd3d-4e72-b105-a2ac741e5149",
+                    "$connId": "con_33",
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "comparison": "equals",
+                            "values": [
+                                "true"
+                            ],
+                            "variable": "hasAttendant"
+                        }
+                    ],
+                    "$invalid": false,
+                    "$id": "96bd69e5-42d6-442b-b842-639f669e23a2"
+                }
+            ],
+            "$enteringCustomActions": [
+                {
+                    "type": "ProcessCommand",
+                    "$title": "CheckAgentsAvailability",
+                    "$invalid": false,
+                    "settings": {
+                        "to": "postmaster@desk.msging.net",
+                        "method": "get",
+                        "uri": "/attendants",
+                        "variable": "result"
+                    },
+                    "conditions": []
+                },
+                {
+                    "type": "ExecuteScript",
+                    "$title": "HandleCheckRequest",
+                    "$invalid": false,
+                    "settings": {
+                        "function": "run",
+                        "source": "// Receive the variables as parameters\nfunction run(result) {\n    result = JSON.parse(result);\n    \n    let hasAttendant = false;\n\n    if(result.resource && result.resource.total >= 1){\n        hasAttendant  = result.resource.items.some(function(attendant){\n            return attendant.status === 'Online';\n        });\n    }\n    return hasAttendant;\n}",
+                        "inputVariables": [
+                            "result"
+                        ],
+                        "outputVariable": "hasAttendant",
+                        "LocalTimeZoneEnabled": false
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "06d43781-32fa-4f7a-a346-7d24b63c0f3e",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] PRA ONDE FOI",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.previous.name}}] Pra onde foi",
+                        "action": "{{state.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "5b766e6a-17a8-4b70-b4c9-c707c5191d2c",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] DE ONDE VEIO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] De onde veio",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "ddf0754b-23aa-4eef-938c-428d91412614",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] HORA DE ACESSO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] Hora de Acesso",
+                        "action": "{{calendar.hour}}"
+                    }
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "fallback",
+                "$invalid": false
+            },
+            "id": "95118c04-1f32-40df-b1b0-54fb24fa2fc7",
+            "root": false,
+            "$title": "3.0 - Verifica Disponibilidade Atendentes",
+            "$position": {
+                "top": "228px",
+                "left": "880px"
+            },
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": [
+                {
+                    "background": "#FC91AE",
+                    "label": "ProcessCommand",
+                    "id": "blip-tag-a691d5d5-f3c4-ef6b-b9c5-614d5de16169",
+                    "canChangeBackground": false
+                },
+                {
+                    "background": "#FF961E",
+                    "label": "ExecuteScript",
+                    "id": "blip-tag-d2974ed4-d8d9-0d87-6153-fbed3205d146",
+                    "canChangeBackground": false
+                }
+            ]
+        },
+        "3c555d39-68eb-466b-9063-6adeb01132fc": {
+            "$contentActions": [
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "aa0d29d3-bab1-427d-9188-93b3638acbcd",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "aa0d29d3-bab1-427d-9188-93b3638acbcd",
+                                "type": "application/vnd.lime.chatstate+json",
+                                "content": {
+                                    "state": "composing",
+                                    "interval": 1000
+                                }
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "504721a0-3d44-4e95-82cc-dd33718b906a",
+                            "type": "text/plain",
+                            "content": "Infelizmente não temos atendentes disponíveis agora. Nosso horário de atendimento é de {{config.startDate}} a {{config.endDate}}"
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "504721a0-3d44-4e95-82cc-dd33718b906a",
+                                "type": "text/plain",
+                                "content": "Infelizmente não temos atendentes disponíveis agora. Nosso horário de atendimento é de {{config.startDate}} a {{config.endDate}}"
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "input": {
+                        "bypass": false,
+                        "$cardContent": {
+                            "document": {
+                                "id": "fd1c385b-7adc-4efb-b829-3b137d4e97c0",
+                                "type": "text/plain",
+                                "textContent": "Entrada do usuário",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right"
+                        },
+                        "$invalid": false,
+                        "expiration": "1:00"
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [
+                {
+                    "stateId": "e3bfe3f0-2cfd-4076-a708-fc209bf297ff",
+                    "conditions": [
+                        {
+                            "source": "input",
+                            "comparison": "notExists",
+                            "values": []
+                        }
+                    ],
+                    "$invalid": false
+                }
+            ],
+            "$enteringCustomActions": [
+                {
+                    "type": "TrackEvent",
+                    "$title": "TrackRequestsOutWorkTime",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {},
+                        "category": "Solicitação",
+                        "action": "Fora Horario Atendimento"
+                    }
+                },
+                {
+                    "$id": "06d43781-32fa-4f7a-a346-7d24b63c0f3e",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] PRA ONDE FOI",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.previous.name}}] Pra onde foi",
+                        "action": "{{state.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "5b766e6a-17a8-4b70-b4c9-c707c5191d2c",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] DE ONDE VEIO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] De onde veio",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "ddf0754b-23aa-4eef-938c-428d91412614",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] HORA DE ACESSO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] Hora de Acesso",
+                        "action": "{{calendar.hour}}"
+                    }
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "0a2d7b49-9df3-4e94-9714-eefd7ed84a6e",
+                "$invalid": false
+            },
+            "id": "3c555d39-68eb-466b-9063-6adeb01132fc",
+            "root": false,
+            "$title": "2.1 - Fora do Horário de Atendimento",
+            "$position": {
+                "top": "389px",
+                "left": "743px"
+            },
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": [
+                {
+                    "background": "#61D36F",
+                    "label": "TrackEvent",
+                    "id": "blip-tag-bc58ce94-4e76-4f66-a2c4-efb9b8ebb738",
+                    "canChangeBackground": false
+                },
+                {
+                    "background": "#232d11",
+                    "label": "User Input",
+                    "id": "blip-tag-ba80e21e-7e32-11e9-8f9e-2a86e4085a59",
+                    "canChangeBackground": false
+                }
+            ]
+        },
+        "desk:b69ef3a2-9983-48f8-9d40-16bad478a460": {
+            "$contentActions": [
+                {
+                    "input": {
+                        "bypass": false,
+                        "$cardContent": {
+                            "document": {
+                                "id": "b04c3ac0-5b0c-4f61-ade4-9adbd31ae1fc",
+                                "type": "text/plain",
+                                "textContent": "Entrada do usuário",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right"
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [
+                {
+                    "$isDeskOutput": true,
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "variable": "input.type",
+                            "comparison": "equals",
+                            "values": [
+                                "application/vnd.iris.ticket+json"
+                            ]
+                        },
+                        {
+                            "source": "context",
+                            "variable": "input.content@status",
+                            "comparison": "equals",
+                            "values": [
+                                "ClosedAttendant"
+                            ]
+                        }
+                    ],
+                    "$invalid": false,
+                    "stateId": "2b9bfb62-6346-4762-99ab-733d0c00d1a3",
+                    "$connId": "con_38",
+                    "$id": "d2c82043-dead-489b-8630-ae2f2680c5c3"
+                },
+                {
+                    "$isDeskOutput": true,
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "variable": "input.type",
+                            "comparison": "equals",
+                            "values": [
+                                "application/vnd.iris.ticket+json"
+                            ]
+                        },
+                        {
+                            "source": "context",
+                            "variable": "input.content@status",
+                            "comparison": "equals",
+                            "values": [
+                                "ClosedClient"
+                            ]
+                        }
+                    ],
+                    "$invalid": false,
+                    "stateId": "2b9bfb62-6346-4762-99ab-733d0c00d1a3",
+                    "$connId": "con_43",
+                    "$id": "22363e2c-29f4-490d-a9c8-8f8e4eaa2166"
+                },
+                {
+                    "$isDeskOutput": true,
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "variable": "input.type",
+                            "comparison": "equals",
+                            "values": [
+                                "application/vnd.iris.ticket+json"
+                            ]
+                        },
+                        {
+                            "source": "context",
+                            "variable": "input.content@status",
+                            "comparison": "equals",
+                            "values": [
+                                "ClosedClientInactivity"
+                            ]
+                        }
+                    ],
+                    "$invalid": false,
+                    "stateId": "2b9bfb62-6346-4762-99ab-733d0c00d1a3",
+                    "$connId": "con_48",
+                    "$id": "bca41e30-6566-49fd-9150-9767da4d7954"
+                }
+            ],
+            "$enteringCustomActions": [
+                {
+                    "type": "ExecuteScript",
+                    "$title": "GetEncodedContactIdentity",
+                    "$invalid": false,
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "variable": "state.previous.id",
+                            "comparison": "notEquals",
+                            "values": [
+                                "desk:b69ef3a2-9983-48f8-9d40-16bad478a460"
+                            ]
+                        }
+                    ],
+                    "settings": {
+                        "function": "run",
+                        "source": "function run(identity) {\n return (identity !== undefined) ? encodeURIComponent(identity) : identity;\n}",
+                        "inputVariables": [
+                            "input.message.fromidentity"
+                        ],
+                        "outputVariable": "helpDeskEncodedFromIdentity",
+                        "LocalTimeZoneEnabled": false
+                    }
+                },
+                {
+                    "type": "ProcessCommand",
+                    "$title": "GetOpenTicket",
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "variable": "state.previous.id",
+                            "comparison": "notEquals",
+                            "values": [
+                                "desk:b69ef3a2-9983-48f8-9d40-16bad478a460"
+                            ]
+                        }
+                    ],
+                    "settings": {
+                        "from": "{{application.identifier}}@{{application.domain}}",
+                        "to": "postmaster@desk.msging.net",
+                        "method": "get",
+                        "uri": "/tickets?$filter=customerIdentity%20eq%20%27{{helpDeskEncodedFromIdentity}}%27%20and%20%28status%20eq%20%27Open%27%20or%20status%20eq%20%27Waiting%27%20or%20status%20eq%20%27Assigned%27%29",
+                        "variable": "helpDeskGetOpenTicketCommandResponse"
+                    },
+                    "$invalid": false
+                },
+                {
+                    "type": "ExecuteScript",
+                    "$title": "TreatGetOpenTicketResponse",
+                    "$invalid": false,
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "variable": "state.previous.id",
+                            "comparison": "notEquals",
+                            "values": [
+                                "desk:b69ef3a2-9983-48f8-9d40-16bad478a460"
+                            ]
+                        }
+                    ],
+                    "settings": {
+                        "function": "run",
+                        "source": "function run(commandResponse) {\n    var response = JSON.parse(commandResponse)\n    var ticketExists = (response && response.resource && response.resource.items && response.resource.items.length > 0);\n  return ticketExists ? \"true\" : \"false\";\n}",
+                        "inputVariables": [
+                            "helpDeskGetOpenTicketCommandResponse"
+                        ],
+                        "outputVariable": "helpDeskHasTicket",
+                        "LocalTimeZoneEnabled": false
+                    }
+                },
+                {
+                    "type": "ProcessCommand",
+                    "$title": "OpenTicketIfNotFound",
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "variable": "helpDeskHasTicket",
+                            "comparison": "notEquals",
+                            "values": [
+                                "true"
+                            ]
+                        }
+                    ],
+                    "settings": {
+                        "from": "{{application.identifier}}@{{application.domain}}",
+                        "to": "postmaster@desk.msging.net",
+                        "method": "set",
+                        "uri": "/tickets/{{helpDeskEncodedFromIdentity}}",
+                        "variable": "helpDeskOpenTicketCommandResponse",
+                        "type": "text/plain",
+                        "resource": "{{input.content}}",
+                        "metadata": {
+                            "server.shouldStore": true
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "type": "ExecuteScript",
+                    "$title": "TreatOpenTicketResponse",
+                    "$invalid": false,
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "variable": "helpDeskHasTicket",
+                            "comparison": "notEquals",
+                            "values": [
+                                "true"
+                            ]
+                        }
+                    ],
+                    "settings": {
+                        "function": "run",
+                        "source": "function run(commandResponse) {\n    var response = commandResponse ? JSON.parse(commandResponse) : {}\n    var ticketExists = response && response.type === \"application/vnd.iris.ticket+json\" && response.resource \n    return ticketExists ? \"true\" : \"false\";\n}",
+                        "inputVariables": [
+                            "helpDeskOpenTicketCommandResponse"
+                        ],
+                        "outputVariable": "helpDeskHasTicket",
+                        "LocalTimeZoneEnabled": false
+                    }
+                },
+                {
+                    "type": "ForwardMessageToDesk",
+                    "settings": {},
+                    "$invalid": false
+                }
+            ],
+            "$leavingCustomActions": [
+                {
+                    "type": "SetVariable",
+                    "$title": "ResetHasTicket",
+                    "settings": {
+                        "$invalid": false,
+                        "variable": "helpDeskHasTicket",
+                        "value": "false"
+                    },
+                    "conditions": [
+                        {
+                            "source": "context",
+                            "variable": "input.type",
+                            "comparison": "equals",
+                            "values": [
+                                "application/vnd.iris.ticket+json"
+                            ]
+                        },
+                        {
+                            "source": "context",
+                            "variable": "input.content@status",
+                            "comparison": "equals",
+                            "values": [
+                                "ClosedAttendant",
+                                "ClosedClient",
+                                "ClosedClientInactivity"
+                            ]
+                        }
+                    ],
+                    "$invalid": false
+                }
+            ],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "desk:b69ef3a2-9983-48f8-9d40-16bad478a460",
+                "$invalid": false
+            },
+            "id": "desk:b69ef3a2-9983-48f8-9d40-16bad478a460",
+            "deskStateVersion": "2.0.1",
+            "root": false,
+            "$title": "4.0 - Atendimento humano",
+            "$position": {
+                "top": "236px",
+                "left": "1350px"
+            },
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": [
+                {
+                    "background": "#FF961E",
+                    "label": "ExecuteScript",
+                    "id": "blip-tag-d2974ed4-d8d9-0d87-6153-fbed3205d146",
+                    "canChangeBackground": false
+                },
+                {
+                    "background": "#FC91AE",
+                    "label": "ProcessCommand",
+                    "id": "blip-tag-a691d5d5-f3c4-ef6b-b9c5-614d5de16169",
+                    "canChangeBackground": false
+                },
+                {
+                    "background": "#FF4A1E",
+                    "label": "SetVariable",
+                    "id": "blip-tag-f56c273b-ba00-ca1c-9342-0d4c15d33ac3",
+                    "canChangeBackground": false
+                },
+                {
+                    "background": "#232d11",
+                    "label": "User Input",
+                    "id": "blip-tag-ba80e21e-7e32-11e9-8f9e-2a86e4085a59",
+                    "canChangeBackground": false
+                }
+            ]
+        },
+        "2b9bfb62-6346-4762-99ab-733d0c00d1a3": {
+            "$contentActions": [
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "b950d0ee-cd9b-4aec-949b-02b8242cbeea",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "b950d0ee-cd9b-4aec-949b-02b8242cbeea",
+                                "type": "application/vnd.lime.chatstate+json",
+                                "content": {
+                                    "state": "composing",
+                                    "interval": 1000
+                                }
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "90ec55b8-aadd-4f92-bf1a-dec84eb60244",
+                            "type": "text/plain",
+                            "content": "Atendimento finalizado!"
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "90ec55b8-aadd-4f92-bf1a-dec84eb60244",
+                                "type": "text/plain",
+                                "content": "Atendimento finalizado!"
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "8b33aca6-bda4-4dec-8a22-5b5f51a2ec53",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "8b33aca6-bda4-4dec-8a22-5b5f51a2ec53",
+                                "type": "application/vnd.lime.chatstate+json",
+                                "content": {
+                                    "state": "composing",
+                                    "interval": 1000
+                                }
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "6bfaa60e-ce61-43fb-978e-80b1c5a15d8d",
+                            "type": "text/plain",
+                            "content": "Em uma escala de 0 a 10, onde 0 é nada satisfeito e 10 é totalmente satisfeito, qual nota você dá para esse atendimento?"
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "6bfaa60e-ce61-43fb-978e-80b1c5a15d8d",
+                                "type": "text/plain",
+                                "content": "Em uma escala de 0 a 10, onde 0 é nada satisfeito e 10 é totalmente satisfeito, qual nota você dá para esse atendimento?"
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "input": {
+                        "bypass": false,
+                        "$cardContent": {
+                            "document": {
+                                "id": "64b7d83d-e2f4-4df4-8ad4-c9489c0f15f9",
+                                "type": "text/plain",
+                                "textContent": "Entrada do usuário",
+                                "content": "score"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right"
+                        },
+                        "$invalid": false,
+                        "variable": "score",
+                        "expiration": "1:00"
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "a0151d70-16b1-455c-9534-a15acac75993",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            },
+                            "metadata": {
+                                "#stateName": "{{state.name}}",
+                                "#stateId": "{{state.id}}",
+                                "#messageId": "{{input.message@id}}",
+                                "#previousStateId": "{{state.previous.id}}",
+                                "#previousStateName": "{{state.previous.name}}"
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "a0151d70-16b1-455c-9534-a15acac75993",
+                                "type": "application/vnd.lime.chatstate+json",
+                                "content": {
+                                    "state": "composing",
+                                    "interval": 1000
+                                }
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "dea1d712-9374-4990-8f99-5f38a06d5263",
+                            "type": "text/plain",
+                            "content": "Obrigado pela participação.",
+                            "metadata": {
+                                "#stateName": "{{state.name}}",
+                                "#stateId": "{{state.id}}",
+                                "#messageId": "{{input.message@id}}",
+                                "#previousStateId": "{{state.previous.id}}",
+                                "#previousStateName": "{{state.previous.name}}"
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "dea1d712-9374-4990-8f99-5f38a06d5263",
+                                "type": "text/plain",
+                                "content": "Obrigado pela participação."
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [
+                {
+                    "stateId": "4fa9b83f-5d89-4765-bf29-d64b7b8b58d3",
+                    "$connId": "con_53",
+                    "$id": "10d76772-ba00-4443-bc5b-1eaacdece3ef",
+                    "conditions": [
+                        {
+                            "source": "input",
+                            "comparison": "exists",
+                            "values": []
+                        }
+                    ],
+                    "$invalid": false
+                },
+                {
+                    "stateId": "e3bfe3f0-2cfd-4076-a708-fc209bf297ff",
+                    "conditions": [
+                        {
+                            "source": "input",
+                            "comparison": "notExists",
+                            "values": []
+                        }
+                    ],
+                    "$invalid": false
+                }
+            ],
+            "$enteringCustomActions": [
+                {
+                    "$id": "06d43781-32fa-4f7a-a346-7d24b63c0f3e",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] PRA ONDE FOI",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.previous.name}}] Pra onde foi",
+                        "action": "{{state.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "5b766e6a-17a8-4b70-b4c9-c707c5191d2c",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] DE ONDE VEIO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] De onde veio",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "ddf0754b-23aa-4eef-938c-428d91412614",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] HORA DE ACESSO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] Hora de Acesso",
+                        "action": "{{calendar.hour}}"
+                    }
+                }
+            ],
+            "$leavingCustomActions": [
+                {
+                    "type": "ExecuteScript",
+                    "$title": "NormalizeScore",
+                    "$invalid": false,
+                    "settings": {
+                        "function": "run",
+                        "source": "// Receive the variables as parameters\nfunction run(score) {\n    if(isNumeric(score)){\n       score = parseInt(score);\n       if(score < 0) return 0;\n       if(score > 10) return 10;\n       return score;\n    }\n    return \"Outro\";\n}\n\n//check if a string has a number\nfunction isNumeric(num){\n  return !isNaN(num)\n}",
+                        "inputVariables": [
+                            "score"
+                        ],
+                        "outputVariable": "score"
+                    }
+                },
+                {
+                    "type": "TrackEvent",
+                    "$title": "TrackScoreValue",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {},
+                        "category": "Score",
+                        "action": "{{score}}"
+                    }
+                }
+            ],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "4fa9b83f-5d89-4765-bf29-d64b7b8b58d3",
+                "$invalid": false
+            },
+            "id": "2b9bfb62-6346-4762-99ab-733d0c00d1a3",
+            "root": false,
+            "$title": "5.0 - Nota de atendimento",
+            "$position": {
+                "top": "236px",
+                "left": "1590px"
+            },
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": [
+                {
+                    "background": "#FF961E",
+                    "label": "ExecuteScript",
+                    "id": "blip-tag-d2974ed4-d8d9-0d87-6153-fbed3205d146",
+                    "canChangeBackground": false
+                },
+                {
+                    "background": "#61D36F",
+                    "label": "TrackEvent",
+                    "id": "blip-tag-bc58ce94-4e76-4f66-a2c4-efb9b8ebb738",
+                    "canChangeBackground": false
+                }
+            ]
+        },
+        "143e0124-ec4e-462d-8369-efc61791afe6": {
+            "$contentActions": [
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "95011b31-5279-4d98-968d-b5af3c6d6b26",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "95011b31-5279-4d98-968d-b5af3c6d6b26",
+                                "type": "application/vnd.lime.chatstate+json",
+                                "content": {
+                                    "state": "composing",
+                                    "interval": 1000
+                                }
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "2d2d011a-e3d5-4807-a347-d6cd9b3f43c8",
+                            "type": "text/plain",
+                            "content": "Desculpe, não temos atendentes disponíveis no momento. Por favor, tente novamente mais tarde."
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "2d2d011a-e3d5-4807-a347-d6cd9b3f43c8",
+                                "type": "text/plain",
+                                "content": "Desculpe, não temos atendentes disponíveis no momento. Por favor, tente novamente mais tarde."
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "input": {
+                        "bypass": false,
+                        "$cardContent": {
+                            "document": {
+                                "id": "76137ac2-42ab-4ee9-aef7-743cb9160a98",
+                                "type": "text/plain",
+                                "textContent": "Entrada do usuário",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right"
+                        },
+                        "$invalid": false,
+                        "expiration": "1:00"
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [
+                {
+                    "stateId": "e3bfe3f0-2cfd-4076-a708-fc209bf297ff",
+                    "conditions": [
+                        {
+                            "source": "input",
+                            "comparison": "notExists",
+                            "values": []
+                        }
+                    ],
+                    "$invalid": false
+                }
+            ],
+            "$enteringCustomActions": [
+                {
+                    "type": "TrackEvent",
+                    "$title": "TrackRequestsWithoutAgent",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {},
+                        "category": "Solicitação",
+                        "action": "Sem Atendente"
+                    }
+                },
+                {
+                    "type": "TrackEvent",
+                    "$title": "TrackAbsoluteNotAvailableAgents",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {},
+                        "category": "Atendentes Indisponíveis",
+                        "action": "Atendentes Indisponíveis"
+                    }
+                },
+                {
+                    "$id": "06d43781-32fa-4f7a-a346-7d24b63c0f3e",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] PRA ONDE FOI",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.previous.name}}] Pra onde foi",
+                        "action": "{{state.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "5b766e6a-17a8-4b70-b4c9-c707c5191d2c",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] DE ONDE VEIO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] De onde veio",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "ddf0754b-23aa-4eef-938c-428d91412614",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] HORA DE ACESSO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] Hora de Acesso",
+                        "action": "{{calendar.hour}}"
+                    }
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "0a2d7b49-9df3-4e94-9714-eefd7ed84a6e",
+                "$invalid": false
+            },
+            "id": "143e0124-ec4e-462d-8369-efc61791afe6",
+            "root": false,
+            "$title": "3.2 - Nenhum atendente disponível",
+            "$position": {
+                "top": "390px",
+                "left": "998px"
+            },
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": [
+                {
+                    "background": "#61D36F",
+                    "label": "TrackEvent",
+                    "id": "blip-tag-bc58ce94-4e76-4f66-a2c4-efb9b8ebb738",
+                    "canChangeBackground": false
+                },
+                {
+                    "background": "#232d11",
+                    "label": "User Input",
+                    "id": "blip-tag-ba80e21e-7e32-11e9-8f9e-2a86e4085a59",
+                    "canChangeBackground": false
+                }
+            ]
+        },
+        "4c0d9be0-bd3d-4e72-b105-a2ac741e5149": {
+            "$contentActions": [
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "adaea5c6-03e0-4ba5-9ef6-e1e3f9e9067e",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "adaea5c6-03e0-4ba5-9ef6-e1e3f9e9067e",
+                                "type": "application/vnd.lime.chatstate+json",
+                                "content": {
+                                    "state": "composing",
+                                    "interval": 1000
+                                }
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "04835382-935c-4372-8778-69b4b0912d60",
+                            "type": "text/plain",
+                            "content": "A partir de agora um de nossos atendentes vai respondê-lo."
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "04835382-935c-4372-8778-69b4b0912d60",
+                                "type": "text/plain",
+                                "content": "A partir de agora um de nossos atendentes vai respondê-lo."
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "96272fb2-b301-4611-921b-69aa74791395",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "96272fb2-b301-4611-921b-69aa74791395",
+                                "type": "application/vnd.lime.chatstate+json",
+                                "content": {
+                                    "state": "composing",
+                                    "interval": 1000
+                                }
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "action": {
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "8f63c111-4933-4e07-a9be-574ca9d0fbda",
+                            "type": "text/plain",
+                            "content": "Como podemos ajudá-lo?"
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "8f63c111-4933-4e07-a9be-574ca9d0fbda",
+                                "type": "text/plain",
+                                "content": "Como podemos ajudá-lo?"
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false
+                },
+                {
+                    "input": {
+                        "bypass": true,
+                        "$cardContent": {
+                            "document": {
+                                "id": "86667929-c0a7-473d-b066-fbed10260d73",
+                                "type": "text/plain",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right"
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [
+                {
+                    "stateId": "desk:b69ef3a2-9983-48f8-9d40-16bad478a460",
+                    "$connId": "con_58",
+                    "conditions": [
+                        {
+                            "source": "input",
+                            "comparison": "matches",
+                            "values": [
+                                ".*"
+                            ]
+                        }
+                    ],
+                    "$invalid": false,
+                    "$id": "e2e168f8-0bc4-4e48-b0e6-f03574f00646"
+                }
+            ],
+            "$enteringCustomActions": [
+                {
+                    "type": "TrackEvent",
+                    "$title": "TrackAttendances",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {},
+                        "category": "AtendimentosRealizados",
+                        "action": "AtendimentosRealizados"
+                    }
+                },
+                {
+                    "$id": "06d43781-32fa-4f7a-a346-7d24b63c0f3e",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] PRA ONDE FOI",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.previous.name}}] Pra onde foi",
+                        "action": "{{state.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "5b766e6a-17a8-4b70-b4c9-c707c5191d2c",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] DE ONDE VEIO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] De onde veio",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "ddf0754b-23aa-4eef-938c-428d91412614",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] HORA DE ACESSO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] Hora de Acesso",
+                        "action": "{{calendar.hour}}"
+                    }
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "fallback",
+                "$invalid": false
+            },
+            "id": "4c0d9be0-bd3d-4e72-b105-a2ac741e5149",
+            "root": false,
+            "$title": "3.1 - Atendente disponível",
+            "$position": {
+                "top": "239px",
+                "left": "1112px"
+            },
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false,
+            "$tags": [
+                {
+                    "background": "#61D36F",
+                    "label": "TrackEvent",
+                    "id": "blip-tag-bc58ce94-4e76-4f66-a2c4-efb9b8ebb738",
+                    "canChangeBackground": false
+                }
+            ]
+        },
+        "4fa9b83f-5d89-4765-bf29-d64b7b8b58d3": {
+            "$contentActions": [
+                {
+                    "input": {
+                        "bypass": true,
+                        "$cardContent": {
+                            "document": {
+                                "id": "5fe2828e-5d17-441e-9561-7301a918a6a2",
+                                "type": "text/plain",
+                                "textContent": "Entrada do usuário",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right",
+                            "editing": false
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false
+                }
+            ],
+            "$conditionOutputs": [],
+            "$enteringCustomActions": [
+                {
+                    "$id": "9ecc107b-77b3-4611-8538-c6dc5588c057",
+                    "$typeOfContent": "",
+                    "type": "Redirect",
+                    "$title": "Redirecionar a um serviço",
+                    "$invalid": false,
+                    "settings": {
+                        "address": "[PRD][FOREVERLISS] Main (svc)",
+                        "context": {
+                            "type": "text/plain",
+                            "value": "oi"
+                        }
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "06d43781-32fa-4f7a-a346-7d24b63c0f3e",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] PRA ONDE FOI",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.previous.name}}] Pra onde foi",
+                        "action": "{{state.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "5b766e6a-17a8-4b70-b4c9-c707c5191d2c",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] DE ONDE VEIO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] De onde veio",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "ddf0754b-23aa-4eef-938c-428d91412614",
+                    "$typeOfContent": "",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] HORA DE ACESSO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "id": "{{contact.identity}}"
+                        },
+                        "category": "[{{state.name}}] Hora de Acesso",
+                        "action": "{{calendar.hour}}"
+                    }
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "onboarding",
+                "$invalid": false
+            },
+            "$tags": [
+                {
+                    "background": "#1EA1FF",
+                    "label": "Redirect",
+                    "id": "blip-tag-e6dead9d-5a52-3901-7aa5-9ad0e275ae67",
+                    "canChangeBackground": false
+                }
+            ],
+            "id": "4fa9b83f-5d89-4765-bf29-d64b7b8b58d3",
+            "root": false,
+            "$title": "Redirect",
+            "$position": {
+                "top": "245px",
+                "left": "1812px"
+            },
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false
+        },
+        "4ceeb9c3-a5e5-4b5a-9468-352fb3ddf525": {
+            "$contentActions": [
+                {
+                    "input": {
+                        "bypass": true,
+                        "$cardContent": {
+                            "document": {
+                                "id": "1aedd8bc-1f04-417c-b074-747e476cc20d",
+                                "type": "text/plain",
+                                "textContent": "Entrada do usuário",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right",
+                            "editing": false
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false,
+                    "$$hashKey": "object:1564"
+                }
+            ],
+            "$conditionOutputs": [],
+            "$enteringCustomActions": [
+                {
+                    "$id": "5a32fc49-951d-4ed7-aa32-d2f52deac222",
+                    "type": "Redirect",
+                    "$title": "REDIRECT TO MAIN",
+                    "$invalid": false,
+                    "settings": {
+                        "context": {
+                            "type": "text/plain",
+                            "value": "Hi"
+                        },
+                        "address": "[PRD][FOREVERLISS] Main (svc)"
+                    },
+                    "conditions": []
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "onboarding",
+                "$invalid": false
+            },
+            "$tags": [
+                {
+                    "background": "#FF961E",
+                    "label": "ExecuteScript",
+                    "id": "blip-tag-9b90cd4b-25b1-fd0e-8504-8dcfb012ce9f",
+                    "canChangeBackground": false
+                },
+                {
+                    "background": "#1EA1FF",
+                    "label": "Redirect",
+                    "id": "blip-tag-8d1fe934-661c-b704-d210-3a2fcdc44392",
+                    "canChangeBackground": false
+                }
+            ],
+            "id": "4ceeb9c3-a5e5-4b5a-9468-352fb3ddf525",
+            "root": false,
+            "$title": "[REDIRECT] Main",
+            "$position": {
+                "top": "109px",
+                "left": "2026px"
+            },
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false
+        },
+        "e3bfe3f0-2cfd-4076-a708-fc209bf297ff": {
+            "$contentActions": [
+                {
+                    "action": {
+                        "$id": "2301ab7f-df23-4356-9852-78063bc472e3",
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "028d1358-9905-4eed-a3ce-e37d590fd93a",
+                            "type": "application/vnd.lime.chatstate+json",
+                            "content": {
+                                "state": "composing",
+                                "interval": 1000
+                            }
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "028d1358-9905-4eed-a3ce-e37d590fd93a",
+                                "type": "application/vnd.lime.chatstate+json",
+                                "content": {
+                                    "state": "composing",
+                                    "interval": 1000
+                                }
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false,
+                    "$$hashKey": "object:1200"
+                },
+                {
+                    "action": {
+                        "$id": "8e49ef8d-e370-41fa-9b56-2f32fc668f39",
+                        "type": "SendMessage",
+                        "settings": {
+                            "id": "63ca3a05-c664-48e3-bc2d-19fb6eda2533",
+                            "type": "text/plain",
+                            "content": "Vejo que vc não está mais por aqui e por isso vou encerrar o atendimento. Se precisar de mim é só dar um \"Oi\" 😉\n\n*Até mais* 👋",
+                            "metadata": {}
+                        },
+                        "$cardContent": {
+                            "document": {
+                                "id": "63ca3a05-c664-48e3-bc2d-19fb6eda2533",
+                                "type": "text/plain",
+                                "content": "Vejo que vc não está mais por aqui e por isso vou encerrar o atendimento. Se precisar de mim é só dar um \"Oi\" 😉\n\n*Até mais* 👋"
+                            },
+                            "editable": true,
+                            "deletable": true,
+                            "position": "left"
+                        }
+                    },
+                    "$invalid": false,
+                    "$$hashKey": "object:1201"
+                },
+                {
+                    "input": {
+                        "bypass": false,
+                        "$cardContent": {
+                            "document": {
+                                "id": "6899f79f-cde9-4a4f-9f67-f47adaede5b9",
+                                "type": "text/plain",
+                                "textContent": "Entrada do usuário",
+                                "content": "Entrada do usuário"
+                            },
+                            "editable": false,
+                            "deletable": true,
+                            "position": "right",
+                            "editing": false
+                        },
+                        "$invalid": false
+                    },
+                    "$invalid": false,
+                    "$$hashKey": "object:767"
+                }
+            ],
+            "$conditionOutputs": [],
+            "$enteringCustomActions": [
+                {
+                    "$id": "d5d6721a-f2bf-4d05-82aa-e9bdbe7e3b9f",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] INATIVIDADE DO BOT",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "UserId": "{{contact.identity}}"
+                        },
+                        "category": "Inatividade",
+                        "action": "prdforeverlissatdhumano"
+                    },
+                    "conditions": []
+                },
+                {
+                    "$id": "e9931861-0ba8-470c-b09b-b5bf1069f97e",
+                    "type": "TrackEvent",
+                    "$title": "[TRACKING] INATIVIDADE DO SERVIÇO",
+                    "$invalid": false,
+                    "settings": {
+                        "extras": {
+                            "UserId": "{{contact.identity}}"
+                        },
+                        "category": "Inatividade - prdforeverlissatdhumano",
+                        "action": "{{state.previous.name}}"
+                    },
+                    "conditions": []
+                }
+            ],
+            "$leavingCustomActions": [],
+            "$inputSuggestions": [],
+            "$defaultOutput": {
+                "stateId": "4ceeb9c3-a5e5-4b5a-9468-352fb3ddf525",
+                "$invalid": false
+            },
+            "$tags": [],
+            "id": "e3bfe3f0-2cfd-4076-a708-fc209bf297ff",
+            "root": false,
+            "$title": "[MAIN] Inatividade",
+            "$position": {
+                "top": "275px",
+                "left": "2027px"
+            },
+            "$invalidContentActions": false,
+            "$invalidOutputs": false,
+            "$invalidCustomActions": false,
+            "$invalid": false
+        }
+    },
+    "globalAction": {
+        "$contentActions": [],
+        "$conditionOutputs": [],
+        "$enteringCustomActions": [],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$defaultOutput": {
+            "stateId": "fallback",
+            "$invalid": false
+        },
+        "$tags": [],
+        "id": "global-actions",
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false
+    }
+}
